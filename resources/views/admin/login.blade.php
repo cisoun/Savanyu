@@ -9,7 +9,7 @@
     </div>
     <div class="form-group">
         <label for="exampleInputEmail1">Combien vaut {{ $a }} + {{ $b }} ?</label>
-        <input type="number" class="form-control" name="validator" aria-describedby="emailHelp" placeholder="Enter email">
+        <input type="number" class="form-control" name="sum" aria-describedby="sum" placeholder="Somme...">
         <small class="form-text text-muted">Ceci permet de vérifier si tu es bien un humain.</small>
     </div>
     <button type="submit" class="btn btn-primary">Submit</button>

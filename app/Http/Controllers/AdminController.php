@@ -3,8 +3,8 @@
 namespace App\Http\Controllers;
 
 use Cache;
-use Illuminate\Http\Request;
 use Session;
+use Illuminate\Http\Request;
 
 class AdminController extends Controller
 {
@@ -18,14 +18,13 @@ class AdminController extends Controller
         //$this->token = bin2hex(random_bytes(10));
     }
 
-
-
     public function check(Request $request)
     {
-        if (!Cache::has('token'))
+        if (!Cache::has('token') || !Cache::has('sum'))
             return false;
 
-        return Session::get('token') === Cache::get('token');
+        return  Session::get('token') === Cache::get('token') &&
+                Session::get('sum') === Cache::get('sum');
     }
 
     public function index(Request $request)
@@ -36,20 +35,24 @@ class AdminController extends Controller
     public function login(Request $request)
     {
         // Cancel if given token is not current one.
-        if ($request->input('token') === Cache::get('token'))
+        if ($request->input('token') === Cache::get('token') &&
+            $request->input('sum') == Cache::get('sum'))
         {
-            $hash = env('PASSWORD', '');
-            $password = sha1($request->input('password'));
+            // Check password.
+            $hash       = env('PASSWORD', '');
+            $password   = hash('sha256', $request->input('password'));
 
+            // Return to login if wrong.
             if ($hash !== $password)
                 return $this->showLogin($request);
 
+            // Keep token client side and redirect to index.
             Session::set('token', $request->input('token'));
 
             return redirect('/admin/index');
         }
 
-        $this->showLogin($request);
+        return $this->showLogin($request);
     }
 
     public function logout(Request $resquest)
@@ -61,18 +64,19 @@ class AdminController extends Controller
     public function showLogin(Request $request)
     {
         if ($this->check($request))
-            return redirect('admin');
+            return redirect('/admin/login');
 
-        $token = bin2hex(random_bytes(10));
+        // Compute a new token and two values.
+        $token  = bin2hex(random_bytes(10));
+        $a      = rand(1, 20);
+        $b      = rand(1, 20);
+        $sum    = $a + $b; // Sum the user has to find.
 
-        $a = rand(1, 20);
-        $b = rand(1, 20);
-
-        $sum = $a + $b;
-
+        // Keep 'em for later.
         Cache::set('token', $token, 10);
         Cache::set('sum', $sum, 10);
 
+        // Show login.
         return view('admin.login', [
             'token' => $token,
             'a' => $a,
