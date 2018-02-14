@@ -13,6 +13,9 @@ Don't mind this repository (private project).
 ```bash
 $ git clone https://github.com/cisoun/Savanyu.git
 $ cd Savanyu
+$ mkdir vendor
+$ chmod 777 -R vendor
+$ chmod 777 -R storage
 $ composer update
 ```
 
