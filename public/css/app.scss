@@ -39,14 +39,14 @@ a.active {
     height: 768px;
     margin-left: auto;
     margin-right: auto;
-    width: 1280px;
+    width: 1024px;
 }
 
 #container div {}
 
 #menu {
-    margin-top: 150px;
-    width: 200px;
+    margin-top: 113px;
+    width: 218px;
 }
 
 #menu a {
@@ -100,6 +100,7 @@ a.active {
 
 .icon {
     background-repeat: no-repeat;
+    background-size: contain;
     font-size: 0;
     height: 35px;
     margin: 5px 0;
@@ -107,11 +108,11 @@ a.active {
 }
 
 .icon-instagram {
-    background-image: url('../img/instagram.png');
+    background-image: url('../img/instagram.jpg');
 }
 
 .icon-contact {
-    background-image: url('../img/contact.png');
+    background-image: url('../img/contact.jpg');
 }
 
 #biographie {
@@ -123,28 +124,52 @@ a.active {
 }
 
 .peinture {
-    overflow-y: scroll;
     //margin: 50px 0;
+    height: 715px;
+    overflow-y: hidden;
 }
 
 .peinture .grid {
-    margin: 0 auto;
-    width: 1040px;
+    float: left;
+    width: 684px;
 }
 
-.peinture .grid .item {
-    float: left;
+.peinture .grid .grid-item {
     font-size: 10pt;
     font-weight: 100;
+    margin-bottom: 16px;
     text-align: right;
-    width: 500px;
+    width: 334px;
 }
 
-.peinture .grid .item img {
+.peinture .grid .grid-item img {
     /*margin-top: 10px;*/
-    width: 500px;
+    width: 100%;
 }
 
-.peinture .grid .item p {
+.peinture .grid .grid-item p {
     font-weight: 300;
+}
+
+.navigator {
+    float: left;
+    padding-top: 300px;
+    width: 122px;
+
+    .arrow {
+        background-image: url('../img/arrow.png');
+        background-size: contain;
+        background-repeat: no-repeat;
+        height: 15px;
+        margin: auto;
+        width: 30px;
+    }
+
+    .arrow-reverse {
+        -webkit-transform: rotate(180deg);
+        -moz-transform: rotate(180deg);
+        -ms-transform: rotate(180deg);
+        -o-transform: rotate(180deg);
+        transform: rotate(180deg);
+    }
 }

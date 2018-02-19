@@ -1,5 +1,30 @@
 @extends('layouts.admin')
 
 @section('content')
-Hey !
+<div class="row">
+    <div class="col-sm-6">
+        <div class="card" >
+            <!--img class="card-img-top" src="..." alt="Card image cap"-->
+            <div class="card-body">
+                <h5 class="card-title">Articles</h5>
+                <!--p class="card-text">Some quick example text to build on the card title and make up the bulk of the card's content.</p-->
+                <a href="#" class="btn btn-primary">Ajouter un article</a>
+            </div>
+            <ul class="list-group list-group-flush">
+                <li class="list-group-item">Cras justo odio</li>
+                <li class="list-group-item">Dapibus ac facilisis in</li>
+                <li class="list-group-item">Vestibulum at eros</li>
+            </ul>
+        </div>
+    </div>
+    <div class="col-sm-6">
+        <div class="card">
+            <div class="card-body">
+                <h5 class="card-title">Catégories</h5>
+                <p class="card-text">With supporting text below as a natural lead-in to additional content.</p>
+                <a href="#" class="btn btn-primary">Go somewhere</a>
+            </div>
+        </div>
+    </div>
+</div>
 @endsection

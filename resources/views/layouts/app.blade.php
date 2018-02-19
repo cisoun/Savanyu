@@ -7,7 +7,7 @@
 
         <title>Savanyu - @yield('title')</title>
 
-        <link href="{{ url('css/app.min.css') }}" type="text/css" rel="stylesheet">
+        <link href="{{ url('public/css/app.min.css') }}" type="text/css" rel="stylesheet">
         <!--link href="css/pages/@yield('css').css" type="text/css" rel="stylesheet"-->
     </head>
     <body>
@@ -31,8 +31,8 @@
             </div>
         </div>
 
-        <script src="https://code.jquery.com/jquery-3.2.1.slim.min.js" integrity="sha256-k2WSCIexGzOj3Euiig+TlR8gA0EmPjuc79OEeY5L45g=" crossorigin="anonymous"></script>
-        <script src="{{ url('js/main.js') }}"></script>
+        <script src="http://code.jquery.com/jquery-3.3.1.slim.min.js" integrity="sha256-3edrmyuQ0w65f8gfBsqowzjJe2iM6n0nKciPUp8y+7E=" crossorigin="anonymous"></script>
         @yield('js')
+        <script src="{{ url('public/js/app.js') }}"></script>
     </body>
 </html>
