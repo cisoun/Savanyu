@@ -19,6 +19,15 @@ $ chmod 777 -R storage
 $ composer update
 ```
 
+## Configuration
+
+Create a password for the administration panel :
+```bash
+$ echo -n "password" | sha256sum
+```
+
+Then, put it into `.env` after `PASSWORD=`.
+
 ## Run
 
 ```bash
