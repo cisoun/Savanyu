@@ -1,8 +1,12 @@
 @extends('layouts.app')
 
 @section('title', 'Peinture')
+@section('css')
+    <link href="{{ url('public/css/peinture.min.css') }}" type="text/css" rel="stylesheet">
+@endsection
 
 @section('content')
+<div class="scrollable">
 <div class="peinture">
     <div class="grid">
         <div class="grid-item">
@@ -25,6 +29,7 @@
             <img src="{{ url('public/img/my-bathroom.jpg') }}" />
         </div>
     </div>
+</div>
 </div>
 <div class="navigator">
     <div class="arrow"></div>

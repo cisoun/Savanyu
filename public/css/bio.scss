@@ -1,0 +1,14 @@
+#biographie {
+    margin-left: 77px;
+    text-align: left;
+
+    h1 {
+        font-size: 12pt;
+        font-weight: 400;
+        margin: 1em 0;
+
+        &:first-child {
+            margin: 0 0 1em 0;
+        }
+    }
+}

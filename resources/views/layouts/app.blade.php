@@ -8,7 +8,7 @@
         <title>Savanyu - @yield('title')</title>
 
         <link href="{{ url('public/css/app.min.css') }}" type="text/css" rel="stylesheet">
-        <!--link href="css/pages/@yield('css').css" type="text/css" rel="stylesheet"-->
+        @yield('css')
     </head>
     <body>
         <div id="container">
