@@ -15,12 +15,12 @@
             <div id="menu">
                 <a id="menu-works" href="/travaux">Travaux</a>
                 <ul id="menu-works-list">
-                    <li><a href="/travaux/peinture">Peinture</a></li>
-                    <li><a href="/travaux/photographie">Photographie</a></li>
-                    <li><a href="/travaux/sculpture">Sculpture</a></li>
-                    <li><a href="/travaux/video">Vidéo</a></li>
+                    <li><a href="{{ url('travaux/peinture') }}">Peinture</a></li>
+                    <li><a href="{{ url('travaux/photographie') }}">Photographie</a></li>
+                    <li><a href="{{ url('travaux/sculpture') }}">Sculpture</a></li>
+                    <li><a href="{{ url('travaux/video') }}">Vidéo</a></li>
                 </ul>
-                <a id="menu-bio" href="/bio">Bio</a>
+                <a id="menu-bio" href="{{ url('bio') }}">Bio</a>
                 <p class="space"></p>
                 <a id="menu-instagram" href="#" class="icon icon-instagram">Instagram</a>
                 <a id="menu-contact" href="#" class="icon icon-contact">Contact</a>
