@@ -7,8 +7,8 @@
 
         <title>Savanyu - Admin</title>
 
-        <link href="{{ url('css/admin.min.css') }}" type="text/css" rel="stylesheet">
-        <link href="{{ url('css/bootstrap.min.css') }}" type="text/css" rel="stylesheet">
+        <link href="{{ url('public/css/admin.min.css') }}" type="text/css" rel="stylesheet">
+        <link href="{{ url('public/css/bootstrap.min.css') }}" type="text/css" rel="stylesheet">
     </head>
     <body>
         <nav class="navbar navbar-dark bg-dark">
