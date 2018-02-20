@@ -12,11 +12,11 @@
 */
 
 $router->get('/', function () {
-    return view('index');
+    return view('travaux.peinture');
 });
 
 $router->get('/travaux', function () {
-    return view('travaux', ['page' => 'peinture']);
+    return view('travaux.peinture');
 });
 
 $router->get('/travaux/{id}', function ($id) {
