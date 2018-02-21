@@ -13,7 +13,7 @@
     <body>
         <div id="container">
             <div id="menu">
-                <a id="menu-works" href="/travaux">Travaux</a>
+                <a id="menu-works" href="{{ url('travaux') }}">Travaux</a>
                 <ul id="menu-works-list">
                     <li><a href="{{ url('travaux/peinture') }}">Peinture</a></li>
                     <li><a href="{{ url('travaux/photographie') }}">Photographie</a></li>
@@ -31,7 +31,7 @@
             </div>
         </div>
 
-        <script src="http://code.jquery.com/jquery-3.3.1.slim.min.js" integrity="sha256-3edrmyuQ0w65f8gfBsqowzjJe2iM6n0nKciPUp8y+7E=" crossorigin="anonymous"></script>
+        <script src="//code.jquery.com/jquery-3.3.1.slim.min.js" integrity="sha256-3edrmyuQ0w65f8gfBsqowzjJe2iM6n0nKciPUp8y+7E=" crossorigin="anonymous"></script>
         @yield('js')
         <script src="{{ url('public/js/app.js') }}"></script>
     </body>

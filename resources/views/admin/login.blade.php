@@ -1,7 +1,7 @@
 @extends('layouts.admin')
 
 @section('content')
-<form method="post" action="/admin/login">
+<form method="post" action="{{ url('admin/login') }}">
     <input type="hidden" name="token" value="{{ $token }}">
     <div class="form-group">
         <label for="exampleInputPassword1">Mot de passe</label>
