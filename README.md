@@ -33,7 +33,7 @@ Then, put it into `.env` after `PASSWORD=`.
 ### Method 1 : built-in PHP development server
 
 ```bash
-$ php -S localhost:8000 -t public
+$ php -S localhost:8000 -t .
 ```
 
 ### Method 2 : Apache
