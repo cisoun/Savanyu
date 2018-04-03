@@ -2,9 +2,9 @@
 
 namespace App\Http\Controllers;
 
+use Illuminate\Http\Request;
 use Cache;
 use Session;
-use Illuminate\Http\Request;
 
 class AdminController extends Controller
 {
@@ -25,6 +25,11 @@ class AdminController extends Controller
 
         return  Session::get('token') === Cache::get('token') &&
                 Session::get('sum') === Cache::get('sum');
+    }
+
+    public function new(Request $request)
+    {
+        return view('admin.artwork');
     }
 
     public function index(Request $request)

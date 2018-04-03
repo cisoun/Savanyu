@@ -28,7 +28,7 @@ $app->withFacades(true, [
     Illuminate\Support\Facades\Session::class => "Session",
 ]);
 
-// $app->withEloquent();
+$app->withEloquent();
 
 /*
 |--------------------------------------------------------------------------

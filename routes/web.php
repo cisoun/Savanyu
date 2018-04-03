@@ -38,7 +38,12 @@ $router->get('/admin/logout', 'AdminController@logout');
 
 $router->group(['middleware' => 'auth'], function () use ($router) {
 
-    $router->get('/admin', 'AdminController@index');
-    $router->get('/admin/index', 'AdminController@index');
+    $router->get('admin/index', [
+        'as' => 'admin.index', 'uses' => 'AdminController@index'
+    ]);
+
+    $router->get('admin', 'AdminController@index');
+    $router->get('admin/new', 'AdminController@new');
+    $router->post('admin/store', 'ArtworksController@store');
 
 });

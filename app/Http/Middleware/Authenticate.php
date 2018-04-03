@@ -31,6 +31,9 @@ class Authenticate
             return redirect('/');
         }
 
+        // Reset token duration.
+        Cache::set('token', Cache::get('token'), 10);
+
         return $next($request);
     }
 }

@@ -16,6 +16,7 @@
         "mockery/mockery": "~0.9"
     },
     "autoload": {
+        "files" : ["app/Helpers.php"],
         "psr-4": {
             "App\\": "app/"
         }
