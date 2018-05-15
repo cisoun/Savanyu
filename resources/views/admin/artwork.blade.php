@@ -1,7 +1,4 @@
 @extends('layouts.admin')
-@section('css')
-<link href="{{ url('public/css/open-iconic-bootstrap.min.css') }}" type="text/css" rel="stylesheet">
-@endsection
 @section('navbar')
 <button class="btn btn-outline-primary" type="button">Ajouter l'oeuvre</button>
 @endsection
@@ -42,6 +39,13 @@
                 <option value="0">Image unique</option>
                 <option value="1">Galerie</option>
             </select>
+        </div>
+    </div>
+    
+    <div id="columns-row" class="form-group row">
+        <label for="type" class="col-sm-2 col-form-label">Colonnes</label>
+        <div class="col-sm-10">
+            <input class="form-control" type="number" name="columns" min="1" max="20"/>
         </div>
     </div>
 

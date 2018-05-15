@@ -5,6 +5,7 @@ namespace App\Http\Controllers;
 use Illuminate\Http\Request;
 use Cache;
 use Session;
+use App\Artwork;
 
 class AdminController extends Controller
 {
@@ -34,7 +35,7 @@ class AdminController extends Controller
 
     public function index(Request $request)
     {
-        return view('admin.index');
+        return view('admin.index', ['artworks' => Artwork::all()]);
     }
 
     public function login(Request $request)

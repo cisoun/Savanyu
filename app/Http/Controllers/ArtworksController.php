@@ -9,6 +9,17 @@ use App\Upload;
 
 class ArtworksController extends Controller
 {
+    public function index(Request $request)
+    {
+        return Artwork::all();
+    }
+    
+    public function showPaintings(Request $request)
+    {
+        $paintings = Artwork::where('category', 0)->get();
+        return view('travaux.peinture', ['paintings' => $paintings]);    
+    }
+    
     /**
     * Store a new artwork.
     *

@@ -3,6 +3,8 @@
 namespace App;
 
 use Illuminate\Database\Eloquent\Model;
+use App\ArtworkUpload;
+use App\Upload;
 
 class Artwork extends Model
 {
@@ -35,4 +37,16 @@ class Artwork extends Model
      * @var array
      */
     protected $guarded = ['id'];
+    
+    public function getThumbnailAttribute()
+    {
+        $upload = $this->uploads()->first()->upload_id;
+        $thumbnail = Upload::find($upload);
+        return $thumbnail;
+    }
+    
+    public function uploads()
+    {
+        return $this->hasMany('App\ArtworkUpload');
+    }
 }

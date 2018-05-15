@@ -9,7 +9,14 @@
 <div class="scrollable">
 <div class="peinture">
     <div class="grid">
-        <div class="grid-item">
+        @foreach ($paintings as $painting)
+            <div class="grid-item">
+                <img src="{{ upload($painting->thumbnail->name) }}" />
+                <p>{{ $painting->title }}</p>
+                {{ $painting->description }}
+            </div>
+        @endforeach
+        <!--div class="grid-item">
             <img src="{{ url('public/img/TMLondon.jpg') }}" />
             <p>T.M SHOW IN LONDON</p>
             Huile, colle et craie sur bois, 100 x 86.3 cm, 2014
@@ -27,7 +34,7 @@
         </div>
         <div class="grid-item">
             <img src="{{ url('public/img/my-bathroom.jpg') }}" />
-        </div>
+        </div-->
     </div>
 </div>
 </div>

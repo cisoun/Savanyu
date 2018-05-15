@@ -7,8 +7,9 @@
 
     <title>Savanyu - Admin</title>
 
-    <link href="{{ url('public/css/admin.min.css') }}" type="text/css" rel="stylesheet">
     <link href="{{ url('public/css/bootstrap.min.css') }}" type="text/css" rel="stylesheet">
+    <link href="{{ url('public/css/admin.min.css') }}" type="text/css" rel="stylesheet">
+    <link href="{{ url('public/css/open-iconic-bootstrap.min.css') }}" type="text/css" rel="stylesheet">
     @yield('css')
 </head>
 <body>

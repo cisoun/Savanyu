@@ -4,16 +4,20 @@
 <div class="row">
     <div class="col-sm-6">
         <div class="card" >
-            <!--img class="card-img-top" src="..." alt="Card image cap"-->
-            <div class="card-body">
-                <h5 class="card-title">Articles</h5>
-                <!--p class="card-text">Some quick example text to build on the card title and make up the bulk of the card's content.</p-->
-                <a href="{{ url('admin/new')}}" class="btn btn-primary">Ajouter un article</a>
+            <div class="card-header d-flex justify-content-between">
+                <div class="card-title-with-button"><h5>Articles</h5></div>
+                <a href="{{ url('admin/new')}}" class="btn btn-primary">Ajouter</a>
             </div>
             <ul class="list-group list-group-flush">
-                <li class="list-group-item">Cras justo odio</li>
-                <li class="list-group-item">Dapibus ac facilisis in</li>
-                <li class="list-group-item">Vestibulum at eros</li>
+                @foreach ($artworks as $artwork)
+                <li class="list-group-item">
+                    {{ $artwork->title }}
+                    <span class="list-actions float-right">
+                        <a href="{{ url('admin/new')}}" class="btn btn-sm btn-secondary"><span class="oi oi-pencil"></span></a>
+                        <a href="{{ url('admin/new')}}" class="btn btn-sm btn-danger"><span class="oi oi-x"></span></a>
+                    </span>
+                </li>
+                @endforeach
             </ul>
         </div>
     </div>

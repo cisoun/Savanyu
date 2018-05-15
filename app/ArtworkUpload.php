@@ -4,14 +4,16 @@ namespace App;
 
 use Illuminate\Database\Eloquent\Model;
 
-class Upload extends Model
+class ArtworkUpload extends Model
 {
+    public $timestamps = false;
+    
     /**
      * The table associated with the model.
      *
      * @var string
      */
-    protected $table = 'artwork_uploads';
+    protected $table = 'artworks_uploads';
 
     /**
      * The attributes that are mass assignable.
@@ -30,4 +32,9 @@ class Upload extends Model
      * @var array
      */
     protected $guarded = ['id'];
+    
+    public function upload()
+    {
+        return $this->hasMany('App\Upload');
+    }
 }

@@ -1,9 +1,9 @@
 Dropzone.autoDiscover = false;
 
-
-var dropzone = $("div#dropzone-form");
+var dropzone = $('div#dropzone-form');
 var editor = $('#editor');
 var form = $('#form-artwork');
+var columnsRow = $('#columns-row');
 
 editor.wysiwyg();
 
@@ -14,7 +14,8 @@ dropzone = new Dropzone('#dropzone-form', {
     previewTemplate: document.querySelector('#dropzone-template').innerHTML
 });
 
-$("div#dropzone-form").sortable({
+// Make the dropzone sortable.
+$('div#dropzone-form').sortable({
     items:'.dz-preview',
     cursor: 'move',
     opacity: 0.5,
@@ -23,6 +24,15 @@ $("div#dropzone-form").sortable({
     tolerance: 'pointer'
 });
 
+$('#type').change(function() {
+    var index = $('#type').val();
+    if (index == 0)
+        columnsRow.hide();
+    else
+        columnsRow.show();
+});
+
+columnsRow.hide();
 
 // process the form
 form.submit(function(event) {
@@ -68,6 +78,5 @@ form.submit(function(event) {
     .fail(function(data) {
         console.log(data);
     });
-
 
 });

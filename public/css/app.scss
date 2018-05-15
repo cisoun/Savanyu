@@ -76,10 +76,6 @@ a.active {
     margin-top: 50px;
 }
 
-.space {
-    height: 340px;
-}
-
 #content {
     display: flex;
     height: 100%;
@@ -87,6 +83,10 @@ a.active {
     margin-top: 70px;
     text-align: center;
     width: 1080px;
+}
+
+.space {
+    height: 340px;
 }
 
 .centered {
