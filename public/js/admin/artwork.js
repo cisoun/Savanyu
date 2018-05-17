@@ -1,11 +1,19 @@
-Dropzone.autoDiscover = false;
-
+var id = $('#id').val();
 var dropzone = $('div#dropzone-form');
 var editor = $('#editor');
 var form = $('#form-artwork');
 var columnsRow = $('#columns-row');
 
+//
+// Editor
+//
+
 editor.wysiwyg();
+
+//
+// Dropzone
+//
+Dropzone.autoDiscover = false;
 
 dropzone = new Dropzone('#dropzone-form', {
     url: '/file/post',
@@ -24,6 +32,21 @@ $('div#dropzone-form').sortable({
     tolerance: 'pointer'
 });
 
+//Add existing files into dropzone
+if (artwork.includes('uploads')) {
+    for (var i = 0; i < artwork.uploads.length; i++) {
+        var thumbnail = artwork.uploads[i].name;
+        var file = { name: i, size: 0 };
+        dropzone.emit("addedfile", file);
+        dropzone.emit("thumbnail", file, thumbnail);
+        dropzone.emit("complete", file);   
+    }
+}
+
+//
+// Columns
+//
+
 $('#type').change(function() {
     var index = $('#type').val();
     if (index == 0)
@@ -34,13 +57,16 @@ $('#type').change(function() {
 
 columnsRow.hide();
 
+//
+// Form
+//
+
 // process the form
 form.submit(function(event) {
     // stop the form from submitting the normal way and refreshing the page
     event.preventDefault();
 
     var formData = new FormData($(this)[0]);
-    console.log(formData);
     formData.append('text', editor.cleanHtml());
 
 
@@ -56,16 +82,18 @@ form.submit(function(event) {
     for (var i = 0; i < dropzone.files.length; i++)
         formData.append('file' + i, dropzone.files[i]);
 
-    // process the form
+    var update = artwork.id > 0;
+
+    // Process the form
     $.ajax({
-        type        : 'POST', // define the type of HTTP verb we want to use (POST for our form)
-        url         : 'store', // the url where we want to POST
+        type        : 'POST', // POST only. PATCH doesn't work for form-data (Laravel bug).
+        url         : update ? 'update' : 'store', // the url where we want to POST
         data        : formData, // our data object
         dataType    : 'json', // what type of data do we expect back from the server
         encode      : true,
-        cache: false,
-        contentType: false,
-        processData: false
+        cache       : false,
+        contentType : false,
+        processData : false
     })
     // using the done promise callback
     .done(function(data) {

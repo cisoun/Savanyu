@@ -2,6 +2,10 @@ main {
     padding: 7em 0;
 }
 
+.navbar > a {
+    color: white !important;
+}
+
 #editor {
     margin-top: 1em;
     overflow:scroll; height:300px

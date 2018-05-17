@@ -38,6 +38,19 @@ class Artwork extends Model
      */
     protected $guarded = ['id'];
     
+    public function getImagesAttribute()
+    {
+        $images = [];
+        $uploads = $this->uploads()->get();
+        
+        for ($i = 0; $i < count($uploads); $i++)
+        {
+            $upload = Upload::find($uploads[$i]->id);
+            $images[] = $upload;
+        }
+        return $images;
+    }
+    
     public function getThumbnailAttribute()
     {
         $upload = $this->uploads()->first()->upload_id;

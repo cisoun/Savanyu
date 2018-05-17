@@ -28,9 +28,21 @@ class AdminController extends Controller
                 Session::get('sum') === Cache::get('sum');
     }
 
+    public function edit(Request $request, $id)
+    {
+        $artwork = Artwork::find($id);
+        $uploads = $artwork->images;
+        for ($i = 0; $i < count($uploads); $i++)
+        {
+            $uploads[$i]['name'] = upload($uploads[$i]['name']);
+        }
+        $artwork['uploads'] = $uploads;
+        return view('admin.artwork', compact('artwork'));
+    }
+
     public function new(Request $request)
     {
-        return view('admin.artwork');
+        return view('admin.artwork', ['artwork' => new Artwork]);
     }
 
     public function index(Request $request)

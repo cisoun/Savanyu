@@ -11,13 +11,15 @@
 |
 */
 
-$router->get('/', function () {
-    return view('travaux.peinture');
-});
+$router->get('/', 'ArtworksController@showPaintings');
 
-$router->get('/travaux', function () {
+/*$router->get('/travaux', function () {
     return view('travaux.peinture');
-});
+});*/
+
+$router->get('/travaux', 'ArtworksController@showPaintings');
+$router->get('/travaux/peinture', 'ArtworksController@showPaintings');
+
 
 $router->get('/travaux/{id}', function ($id) {
     return view('travaux.' . $id, ['page' => $id]);
@@ -32,6 +34,7 @@ $router->get('/bio', function () {
 $router->get('/admin/login', 'AdminController@showLogin');
 $router->post('/admin/auth', "AdminController@authenticate");*/
 
+$router->get('/admin', 'AdminController@showLogin');
 $router->get('/admin/login', 'AdminController@showLogin');
 $router->post('/admin/login', 'AdminController@login');
 $router->get('/admin/logout', 'AdminController@logout');
@@ -42,8 +45,11 @@ $router->group(['middleware' => 'auth'], function () use ($router) {
         'as' => 'admin.index', 'uses' => 'AdminController@index'
     ]);
 
+    $router->post('admin/{id}/update', 'ArtworksController@update');
+    $router->post('admin/store', ['as' => 'createArtwork', 'uses' => 'ArtworksController@store']);
+    
     $router->get('admin', 'AdminController@index');
     $router->get('admin/new', 'AdminController@new');
-    $router->post('admin/store', 'ArtworksController@store');
+    $router->get('admin/{id}/edit', 'AdminController@edit');
 
 });

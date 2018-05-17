@@ -1,29 +1,51 @@
+<?php 
+    $buttonTitle = $artwork->id !== null ? 'Mettre à jour' : 'Ajouter';
+?>
 @extends('layouts.admin')
 @section('navbar')
-<button class="btn btn-outline-primary" type="button">Ajouter l'oeuvre</button>
+<div class="text-right">
+    <a class="btn btn-link text-white" href="{{ route('admin.index') }}">« Revenir au menu</a>
+    <button class="btn btn-primary" type="button">{{ $buttonTitle }}</button>
+</div>
 @endsection
 
 @section('content')
+<!--
+
+https://stackoverflow.com/questions/22844022/laravel-use-same-form-for-create-and-edit/22847292
+
+-->
+
+
 <form id="form-artwork">
-
+    
+    <input type="hidden" id="id" name="id" value="{{ $artwork->id }}" />
+    
     <div class="form-group row">
-        <label for="title" class="col-sm-2 col-form-label">Titre</label>
-        <div class="col-sm-10">
-            <input id="title" name="title" type="text" class="form-control" aria-describedby="title" placeholder="Titre de l'oeuvre" required>
+        <label for="title" class="col-sm-2 col-form-label text-right">Titre</label>
+        <div class="col-sm-8">
+            <input id="title"
+            aria-describedby="title"
+            class="form-control"
+            name="title"
+            placeholder="Titre de l'oeuvre"
+            type="text"
+            value="{{ $artwork->title }}"
+            required>
         </div>
     </div>
-
+    
     <div class="form-group row">
-        <label for="description" class="col-sm-2 col-form-label">Description</label>
-        <div class="col-sm-10">
-            <textarea id="description" class="form-control" name="description" rows="3"></textarea>
+        <label for="description" class="col-sm-2 col-form-label text-right">Description</label>
+        <div class="col-sm-8">
+            <textarea id="description" class="form-control" name="description" rows="3" value="test">{{ $artwork->description }}</textarea>
         </div>
     </div>
-
+    
     <div class="form-group row">
-        <label for="category" class="col-sm-2 col-form-label">Catégorie</label>
-        <div class="col-sm-10">
-            <select class="dropdown form-control" id="category" name="category">
+        <label for="category" class="col-sm-2 col-form-label text-right">Catégorie</label>
+        <div class="col-sm-8">
+            <select class="dropdown form-control" id="category" name="category" value="{{ $artwork->category }}">
                 <option value="0">Peinture</option>
                 <option value="1">Vidéo</option>
                 <option value="2">Sculpture</option>
@@ -31,11 +53,11 @@
             </select>
         </div>
     </div>
-
+    
     <div class="form-group row">
-        <label for="type" class="col-sm-2 col-form-label">Type</label>
-        <div class="col-sm-10">
-            <select class="dropdown form-control" id="type" name="type">
+        <label for="type" class="col-sm-2 col-form-label text-right">Type</label>
+        <div class="col-sm-8">
+            <select class="dropdown form-control" id="type" name="type" value="{{ $artwork->type }}">
                 <option value="0">Image unique</option>
                 <option value="1">Galerie</option>
             </select>
@@ -43,17 +65,17 @@
     </div>
     
     <div id="columns-row" class="form-group row">
-        <label for="type" class="col-sm-2 col-form-label">Colonnes</label>
-        <div class="col-sm-10">
-            <input class="form-control" type="number" name="columns" min="1" max="20"/>
+        <label for="type" class="col-sm-2 col-form-label text-right">Colonnes</label>
+        <div class="col-sm-8">
+            <input class="form-control" type="number" name="columns" min="1" max="20" value="{{ $artwork->columns }}"/>
         </div>
     </div>
-
+    
     <div class="form-group row">
-        <label for="description" class="col-sm-2 col-form-label">Texte</label>
-        <div class="col-sm-10">
+        <label for="description" class="col-sm-2 col-form-label text-right">Texte</label>
+        <div class="col-sm-8">
             <div class="btn-toolbar" role="toolbar" data-role="editor-toolbar" data-target="#editor">
-
+                
                 <div class="btn-group mr-2" role="group">
                     <div class="btn-group" role="group">
                         <button id="btnGroupDrop1" type="button" class="btn btn-secondary dropdown-toggle" data-toggle="dropdown" aria-haspopup="true" aria-expanded="false">
@@ -69,7 +91,7 @@
                     <button type="button" class="btn btn-secondary" data-edit="italic"><span class="oi oi-italic"></span></button>
                     <button type="button" class="btn btn-secondary" data-edit="underline"><span class="oi oi-underline"></span></button>
                 </div>
-
+                
                 <div class="btn-group  mr-2" role="group">
                     <div class="btn-group" role="group">
                         <button type="button" class="btn btn-secondary dropdown-toggle" data-toggle="dropdown" title="Hyperlink">
@@ -83,14 +105,14 @@
                     <button type="button" class="btn btn-secondary" data-edit="unlink" title="Enlever Hyperlink"><span class="oi oi-link-broken"></span></button>
                 </div>
             </div>
-
-            <div id="editor" class="form-control"></div>
+            
+            <div id="editor" class="form-control">{{ $artwork->text }}</div>
         </div>
     </div>
-
+    
     <div class="form-group row">
-        <label for="dropzone" class="col-sm-2 col-form-label">Images</label>
-        <div class="col-sm-10">
+        <label for="dropzone" class="col-sm-2 col-form-label text-right">Images</label>
+        <div class="col-sm-8">
             <div id="dropzone-form" class="form-control">
                 <div id="dropzone-template" style="display:none">
                     <div class="card dz-preview dz-file-preview">
@@ -108,18 +130,24 @@
             </small>
         </div>
     </div>
-
+    
     <div class="form-group row">
         <hr/>
-        <div class="float-right">
+        <div class="col-sm-8 text-right">
             <a class="btn" href="{{ route('admin.index') }}">« Revenir au menu</a>
-            <button type="submit" class="btn btn-primary">Ajouter l'oeuvre</button>
+            <button type="submit" class="btn btn-primary">{{ $buttonTitle }}</button>
         </div>
+        <div class="col-sm-2"/>
     </div>
-
+    
 </form>
+
 @endsection
 @section('js')
+<script>    
+    var artwork = {!! json_encode($artwork->toArray()) !!};
+</script>
+
 <script src="{{ url('public/js/jquery-ui.min.js') }}"></script>
 <script src="{{ url('public/js/jquery.hotkeys.js') }}"></script>
 <script src="{{ url('public/js/bootstrap-wysiwyg.js') }}"></script>

@@ -13,7 +13,7 @@
                 <li class="list-group-item">
                     {{ $artwork->title }}
                     <span class="list-actions float-right">
-                        <a href="{{ url('admin/new')}}" class="btn btn-sm btn-secondary"><span class="oi oi-pencil"></span></a>
+                        <a href="{{ url('admin/' . $artwork->id . '/edit')}}" class="btn btn-sm btn-secondary"><span class="oi oi-pencil"></span></a>
                         <a href="{{ url('admin/new')}}" class="btn btn-sm btn-danger"><span class="oi oi-x"></span></a>
                     </span>
                 </li>

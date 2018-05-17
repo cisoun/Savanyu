@@ -29,8 +29,7 @@ class ArtworksController extends Controller
     public function store(Request $request)
     {
         $this->validate($request, [
-            'title' => 'required',
-            //'email' => 'required|email|unique:users'
+            'title' => 'required|unique:artworks',
         ]);
 
         $artwork = new Artwork;
@@ -67,5 +66,17 @@ class ArtworksController extends Controller
 
         return $request->all();
         //return Artwork::create($request->all());
+    }
+    
+    
+    public function update(Request $request, $id)
+    {
+        $artwork = Artwork::find($id);
+        return tap($artwork)->update($request->all());
+    }
+    
+    public function upload(Request $request, Artwork $artwork)
+    {
+        $artwork->update(Request::all());
     }
 }
