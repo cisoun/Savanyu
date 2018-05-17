@@ -33,7 +33,7 @@ $('div#dropzone-form').sortable({
 });
 
 //Add existing files into dropzone
-if (artwork.includes('uploads')) {
+if ('uploads' in artwork) {
     for (var i = 0; i < artwork.uploads.length; i++) {
         var thumbnail = artwork.uploads[i].name;
         var file = { name: i, size: 0 };
