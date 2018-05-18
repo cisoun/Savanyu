@@ -53,6 +53,9 @@ class Artwork extends Model
     
     public function getThumbnailAttribute()
     {
+        if ($this->uploads()->count() == 0)
+            return new Upload;
+            
         $upload = $this->uploads()->first()->upload_id;
         $thumbnail = Upload::find($upload);
         return $thumbnail;

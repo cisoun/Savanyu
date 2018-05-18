@@ -28,6 +28,17 @@ class AdminController extends Controller
                 Session::get('sum') === Cache::get('sum');
     }
 
+    public function delete(Request $request, $id)
+    {
+        $artwork = Artwork::find($id);
+        
+        if ($artwork != null)
+        {
+            $artwork->delete();
+        }
+        return $this->index($request);
+    }
+
     public function edit(Request $request, $id)
     {
         $artwork = Artwork::find($id);
