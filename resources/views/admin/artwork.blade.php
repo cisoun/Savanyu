@@ -1,5 +1,6 @@
 <?php 
     $buttonTitle = $artwork->id !== null ? 'Mettre à jour' : 'Ajouter';
+    $alert = $artwork->id !== null ? 'mise à jour' : 'enregistrée';
 ?>
 @extends('layouts.admin')
 @section('navbar')
@@ -15,23 +16,39 @@
 https://stackoverflow.com/questions/22844022/laravel-use-same-form-for-create-and-edit/22847292
 
 -->
+<template id="alert-success">
+    <div class="alert alert-success alert-dismissible fade show" role="alert">
+      <strong>Chouette !</strong> L'oeuvre a bien été {{ $alert }}.
+      <button type="button" class="close" data-dismiss="alert" aria-label="Close">
+        <span aria-hidden="true">&times;</span>
+      </button>
+    </div>
+</template>
+
+<template id="alert-error">
+    <div class="alert alert-danger alert-dismissible fade show" role="alert">
+      <strong>Oups !</strong> Quelque chose n'est pas juste...
+      <button type="button" class="close" data-dismiss="alert" aria-label="Close">
+        <span aria-hidden="true">&times;</span>
+      </button>
+    </div>
+</template>
 
 
 <form id="form-artwork">
     
     <input type="hidden" id="id" name="id" value="{{ $artwork->id }}" />
     
-    <div class="form-group row">
+    <div class="form-group row">                
         <label for="title" class="col-sm-2 col-form-label text-right">Titre</label>
         <div class="col-sm-8">
-            <input id="title"
-            aria-describedby="title"
-            class="form-control"
-            name="title"
-            placeholder="Titre de l'oeuvre"
-            type="text"
-            value="{{ $artwork->title }}"
-            required>
+            <input class="form-control"
+                name="title"
+                placeholder="Titre de l'oeuvre"
+                type="text"
+                value="{{ $artwork->title }}"
+                required>
+            <small data-for="title" class="form-text text-danger d-none">Ce titre est déjà pris.</small>
         </div>
     </div>
     
@@ -106,7 +123,7 @@ https://stackoverflow.com/questions/22844022/laravel-use-same-form-for-create-an
                 </div>
             </div>
             
-            <div id="editor" class="form-control">{{ $artwork->text }}</div>
+            <div id="editor" class="form-control"></div>
         </div>
     </div>
     
@@ -152,5 +169,5 @@ https://stackoverflow.com/questions/22844022/laravel-use-same-form-for-create-an
 <script src="{{ url('public/js/jquery.hotkeys.js') }}"></script>
 <script src="{{ url('public/js/bootstrap-wysiwyg.js') }}"></script>
 <script src="{{ url('public/js/admin/dropzone.js') }}"></script>
-<script src="{{ url('public/js/admin/artwork.js') }}"></script>
+<script src="{{ url('public/js/admin/artwork.js') }}" type="module"></script>
 @endsection

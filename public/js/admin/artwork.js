@@ -1,14 +1,19 @@
+import { showErrorsInForm, toTop } from '../helpers.js';
+
 var id = $('#id').val();
 var dropzone = $('div#dropzone-form');
 var editor = $('#editor');
 var form = $('#form-artwork');
 var columnsRow = $('#columns-row');
 
+var formInputs = ['title'];
+
 //
 // Editor
 //
 
 editor.wysiwyg();
+editor.html(artwork.text);
 
 //
 // Dropzone
@@ -67,7 +72,7 @@ form.submit(function(event) {
     event.preventDefault();
 
     var formData = new FormData($(this)[0]);
-    formData.append('text', editor.cleanHtml());
+    formData.append('text', editor.html());
 
 
     // get the form data
@@ -98,13 +103,17 @@ form.submit(function(event) {
     // using the done promise callback
     .done(function(data) {
 
-        // log data to the console so we can see
-        console.log(data);
-
         // here we will handle errors and validation messages
+        $(".alert").alert('close');
+        $('#alert-success').after($('#alert-success').html());
+        toTop();
     })
-    .fail(function(data) {
-        console.log(data);
+    .fail(function(data) {        
+        $(".alert").alert('close');
+        $('#alert-error').after($('#alert-error').html());
+        toTop();        
+        
+        showErrorsInForm(formInputs, data);
     });
 
 });

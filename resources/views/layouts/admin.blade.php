@@ -49,6 +49,6 @@
 
 <script src="{{ url('public/js/jquery.min.js') }}"></script>
 @yield('js')
-<script src="{{ url('public/js/bootstrap.bundle.js') }}"></script>
+<script src="{{ url('public/js/bootstrap.bundle.min.js') }}"></script>
 </body>
 </html>

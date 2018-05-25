@@ -9,6 +9,11 @@ use App\Upload;
 
 class ArtworksController extends Controller
 {
+    public function delete(Request $request, $id)
+    {
+        Artwork::destroy($id);
+    }
+    
     public function index(Request $request)
     {
         return Artwork::all();
@@ -71,6 +76,10 @@ class ArtworksController extends Controller
     
     public function update(Request $request, $id)
     {
+        $this->validate($request, [
+            'title' => 'required|unique:artworks',
+        ]);
+        
         $artwork = Artwork::find($id);
         return tap($artwork)->update($request->all());
     }
