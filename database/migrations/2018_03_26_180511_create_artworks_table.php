@@ -17,10 +17,8 @@ class CreateArtworksTable extends Migration
             $table->increments('id');
             $table->integer('category')->unsigned();
             $table->string('title')->unique();
-            $table->string('description')->nullable();;
-            $table->integer('type');
-            $table->string('text')->nullable();;
-            $table->integer('columns')->nullable();;
+            $table->string('description')->nullable();
+            $table->string('text')->nullable();
             $table->timestamps();
         });
     }

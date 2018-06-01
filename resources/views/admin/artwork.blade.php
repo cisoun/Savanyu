@@ -72,23 +72,6 @@ https://stackoverflow.com/questions/22844022/laravel-use-same-form-for-create-an
     </div>
     
     <div class="form-group row">
-        <label for="type" class="col-sm-2 col-form-label text-right">Type</label>
-        <div class="col-sm-8">
-            <select class="dropdown form-control" id="type" name="type" value="{{ $artwork->type }}">
-                <option value="0">Image unique</option>
-                <option value="1">Galerie</option>
-            </select>
-        </div>
-    </div>
-    
-    <div id="columns-row" class="form-group row">
-        <label for="type" class="col-sm-2 col-form-label text-right">Colonnes</label>
-        <div class="col-sm-8">
-            <input class="form-control" type="number" name="columns" min="1" max="20" value="{{ $artwork->columns }}"/>
-        </div>
-    </div>
-    
-    <div class="form-group row">
         <label for="description" class="col-sm-2 col-form-label text-right">Texte</label>
         <div class="col-sm-8">
             <div class="btn-toolbar" role="toolbar" data-role="editor-toolbar" data-target="#editor">
