@@ -2,6 +2,7 @@
 
 namespace App\Http\Controllers;
 
+use Illuminate\Http\RedirectResponse;
 use Illuminate\Http\Request;
 use Cache;
 use Session;
@@ -28,7 +29,7 @@ class AdminController extends Controller
                 Session::get('sum') === Cache::get('sum');
     }
 
-    public function delete(Request $request, $id)
+    public function destroy(Request $request, $id)
     {
         $artwork = Artwork::find($id);
         
@@ -36,18 +37,29 @@ class AdminController extends Controller
         {
             $artwork->delete();
         }
+        
         return $this->index($request);
     }
 
     public function edit(Request $request, $id)
     {
         $artwork = Artwork::find($id);
+        
+        // Redirect if bad id.
+        if ($artwork == null)
+        {
+            return redirect('admin'); 
+        }
+        
         $uploads = $artwork->images;
+        
         for ($i = 0; $i < count($uploads); $i++)
         {
             $uploads[$i]['name'] = upload($uploads[$i]['name']);
         }
+        
         $artwork['uploads'] = $uploads;
+        
         return view('admin.artwork', compact('artwork'));
     }
 

@@ -14,10 +14,15 @@
                     {{ $artwork->title }}
                     <span class="list-actions float-right">
                         <a href="{{ url('admin/' . $artwork->id . '/edit')}}" class="btn btn-sm btn-secondary"><span class="oi oi-pencil"></span></a>
-                        <a href="{{ url('admin/' . $artwork->id . '/delete')}}" class="btn btn-sm btn-danger"><span class="oi oi-x"></span></a>
+                        <a href="{{ url('admin/' . $artwork->id . '/destroy')}}" class="btn btn-sm btn-danger"><span class="oi oi-x"></span></a>
                     </span>
                 </li>
                 @endforeach
+                @if (count($artworks) == 0)
+                <div class="card-empty">
+                    Il n'y a aucune oeuvre pour le moment...
+                </div>
+                @endif
             </ul>
         </div>
     </div>

@@ -52,7 +52,7 @@ $router->group(['middleware' => 'auth'], function () use ($router) {
     $router->get('admin', 'AdminController@index');
     $router->get('admin/new', 'AdminController@new');
     $router->get('admin/{id}/edit', 'AdminController@edit');
-    $router->get('admin/{id}/delete', 'AdminController@delete');
+    $router->get('admin/{id}/destroy', 'AdminController@destroy');
     
 
 });
