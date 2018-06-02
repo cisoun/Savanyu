@@ -8,6 +8,11 @@ var columnsRow = $('#columns-row');
 
 var formInputs = ['title'];
 
+
+$('#navbar-submit').click(() => {
+    form.submit();
+});
+
 //
 // Editor
 //
@@ -37,7 +42,7 @@ $('div#dropzone-form').sortable({
     tolerance: 'pointer'
 });
 
-//Add existing files into dropzone
+// Add existing files into dropzone
 if ('uploads' in artwork) {
     for (var i = 0; i < artwork.uploads.length; i++) {
         var thumbnail = artwork.uploads[i].name;
@@ -102,18 +107,17 @@ form.submit(function(event) {
     })
     // using the done promise callback
     .done(function(data) {
-
         // here we will handle errors and validation messages
         $(".alert").alert('close');
         $('#alert-success').after($('#alert-success').html());
-        toTop();
     })
     .fail(function(data) {        
         $(".alert").alert('close');
         $('#alert-error').after($('#alert-error').html());
-        toTop();        
-        
+    })
+    .always(function(data) {
         showErrorsInForm(formInputs, data);
+        toTop();
     });
 
 });

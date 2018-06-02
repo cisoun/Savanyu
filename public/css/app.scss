@@ -85,6 +85,16 @@ a.active {
     width: 1080px;
 }
 
+.popup {
+    background-color: #fff;
+    border: 2px solid #eee;
+    border-radius: 6px;
+    height: 727px;
+    position: absolute;
+    width: 936px;
+    z-index: 0;
+}
+
 .space {
     height: 340px;
 }

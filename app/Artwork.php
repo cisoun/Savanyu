@@ -24,11 +24,9 @@ class Artwork extends Model
         'title',
         'category',
         'description',
-        'type',
         'text',
         'video',
         'audio',
-        'columns'
     ];
 
     /**

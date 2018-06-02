@@ -1,3 +1,5 @@
+@import "variables";
+
 main {
     padding: 7em 0;
 }
@@ -47,6 +49,12 @@ main {
 
 .card-header {
     background-color: #f6f6f9;
+}
+
+.card-empty {
+    color: #999;
+    padding: 1em;
+    text-align: center;
 }
 
 .card-title-with-button {

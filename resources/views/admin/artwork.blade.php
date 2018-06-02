@@ -6,7 +6,7 @@
 @section('navbar')
 <div class="text-right">
     <a class="btn btn-link text-white" href="{{ route('admin.index') }}">« Revenir au menu</a>
-    <button class="btn btn-primary" type="button">{{ $buttonTitle }}</button>
+    <button id="navbar-submit" class="btn btn-primary" type="button">{{ $buttonTitle }}</button>
 </div>
 @endsection
 
@@ -27,7 +27,7 @@ https://stackoverflow.com/questions/22844022/laravel-use-same-form-for-create-an
 
 <template id="alert-error">
     <div class="alert alert-danger alert-dismissible fade show" role="alert">
-      <strong>Oups !</strong> Quelque chose n'est pas juste...
+      <strong>Oups !</strong> Il y a des erreurs...
       <button type="button" class="close" data-dismiss="alert" aria-label="Close">
         <span aria-hidden="true">&times;</span>
       </button>
@@ -48,7 +48,7 @@ https://stackoverflow.com/questions/22844022/laravel-use-same-form-for-create-an
                 type="text"
                 value="{{ $artwork->title }}"
                 required>
-            <small data-for="title" class="form-text text-danger d-none">Ce titre est déjà pris.</small>
+            <small data-for="title" class="form-text text-danger d-none"></small>
         </div>
     </div>
     

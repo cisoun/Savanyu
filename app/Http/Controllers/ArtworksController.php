@@ -34,13 +34,13 @@ class ArtworksController extends Controller
     public function store(Request $request)
     {
         $this->validate($request, [
-            'title' => 'required|unique:artworks',
+            'title' => 'required|unique:artworks,title',
         ]);
 
         $artwork = new Artwork;
         $artwork->title = $request->title;
         $artwork->category = $request->category;
-        $artwork->type = $request->type;
+        //$artwork->type = $request->type;
         $artwork->save();
 
         $i = 0;
@@ -57,7 +57,7 @@ class ArtworksController extends Controller
             $request->file($file)->move('public/uploads', $fileName);
 
             $upload = new Upload;
-            $upload->type = explode('/', mime_content_type('public/uploads/' . $fileName))[0];
+            //$upload->type = explode('/', mime_content_type('public/uploads/' . $fileName))[0];
             $upload->name = $fileName;
             $upload->save();
 
@@ -77,7 +77,7 @@ class ArtworksController extends Controller
     public function update(Request $request, $id)
     {
         $this->validate($request, [
-            'title' => 'required|unique:artworks',
+            'title' => 'required|unique:artworks,title,' . $id,
         ]);
         
         $artwork = Artwork::find($id);

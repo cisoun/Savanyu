@@ -3,10 +3,10 @@ function showErrorsInForm(form, response) {
         var inputElement = $('input[name="' + input + '"]');
         var errorElement = $('[data-for="' + input + '"]');
         
-        if (response.responseJSON.hasOwnProperty(input)) {
+        if (response.responseJSON != null && response.responseJSON.hasOwnProperty(input)) {
             inputElement.addClass('is-invalid');
             errorElement.removeClass('d-none');
-            
+            errorElement.html(response.responseJSON[input]);
         } else {
             inputElement.removeClass('is-invalid');
             errorElement.addClass('d-none');
