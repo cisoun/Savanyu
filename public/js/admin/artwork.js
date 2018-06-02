@@ -8,7 +8,11 @@ var columnsRow = $('#columns-row');
 
 var formInputs = ['title'];
 
+//
+// Navbar
+//
 
+// Bind navbar submit button to form's.
 $('#navbar-submit').click(() => {
     form.submit();
 });
@@ -23,6 +27,7 @@ editor.html(artwork.text);
 //
 // Dropzone
 //
+
 Dropzone.autoDiscover = false;
 
 dropzone = new Dropzone('#dropzone-form', {
