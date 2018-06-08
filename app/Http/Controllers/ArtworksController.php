@@ -57,7 +57,7 @@ class ArtworksController extends Controller
             $request->file($file)->move('public/uploads', $fileName);
 
             $upload = new Upload;
-            //$upload->type = explode('/', mime_content_type('public/uploads/' . $fileName))[0];
+            $upload->type = explode('/', mime_content_type('public/uploads/' . $fileName))[0];
             $upload->name = $fileName;
             $upload->save();
 
