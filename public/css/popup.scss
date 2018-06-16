@@ -1,0 +1,52 @@
+.popup {
+    background-color: rgba(0, 0, 0, 0.1);
+    height: 100%;
+    left: 0;
+    position: absolute;
+    top: 0;
+    width: 100%;
+}
+
+.popup-content {
+    background-color: #fff;
+    border: 2px solid #eee;
+    border-radius: 6px;
+    height: 727px;
+    left: 50%;
+    margin-left: -468px;
+    position: fixed;
+    text-align: center;
+    top: 3em;
+    width: 936px;
+}
+
+.popup-content.animation  {
+    animation: SHW .5s;
+    animation-fill-mode: both
+}
+
+@keyframes SHW {
+    from {
+        transform:scale(0.7);
+        opacity:0
+    }
+    to {
+        transform: scale(1);
+        opacity:1
+    }
+}
+
+.popup-close {
+    background-image: url('../img/cross.svg');
+    height: 20px;
+    margin: 1em;
+    position: absolute;
+    right: 0;
+    top: 0;
+    width: 20px;
+}
+
+.popup-image {
+    height: 627px;
+    margin-top: 50px;
+}
