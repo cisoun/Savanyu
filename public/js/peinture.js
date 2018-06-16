@@ -1,3 +1,9 @@
+function closePopup() {
+    $('.popup').remove();
+    $('#container').removeClass('blurred');
+}
+
+
 $(function() {
     console.log( "ready!" );
 
@@ -17,15 +23,18 @@ $(function() {
         $('#container').after(popupTemplate.html());
         
         $('.popup-content').addClass('animation');
-        
-        
-        console.log(element.currentTarget.children[0].src);
-        
+
         $('.popup-image').attr('src', element.currentTarget.children[0].src);
         
-        $('.popup-close').on('click', (element) => {
-            $('.popup').remove();
-            $('#container').removeClass('blurred');
+        $('.popup-content').click(function(event) {
+            event.stopPropagation();
+        })
+        $('.popup').on('click', () => {
+            closePopup();
+        });
+        $('.popup-close').on('click', () => {
+            closePopup();
         });
     });
+
 });
