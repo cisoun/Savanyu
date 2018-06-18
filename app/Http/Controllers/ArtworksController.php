@@ -40,6 +40,7 @@ class ArtworksController extends Controller
         $artwork = new Artwork;
         $artwork->title = $request->title;
         $artwork->category = $request->category;
+        $artwork->description = $request->description;
         //$artwork->type = $request->type;
         $artwork->save();
 
@@ -53,7 +54,7 @@ class ArtworksController extends Controller
                 break;
             }
 
-            $fileName = sha1(time());
+            $fileName = sha1(time() + $i);
             $request->file($file)->move('public/uploads', $fileName);
 
             $upload = new Upload;
