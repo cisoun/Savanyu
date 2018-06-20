@@ -11,9 +11,10 @@
     background-color: #fff;
     border: 2px solid #eee;
     border-radius: 6px;
-    height: 727px;
+    //height: 727px;
     left: 50%;
     margin-left: -468px;
+    padding: 50px 0 25px 0;
     position: fixed;
     text-align: center;
     top: 3em;
@@ -47,8 +48,8 @@
 }
 
 .popup-image {
-    height: 550px;
-    margin-top: 50px;
+    height: 627px;
+    padding-bottom: 25px;
 }
 
 .popup-thumbnails img {
