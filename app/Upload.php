@@ -3,6 +3,7 @@
 namespace App;
 
 use Illuminate\Database\Eloquent\Model;
+use App\Helpers;
 
 class Upload extends Model
 {
@@ -29,4 +30,19 @@ class Upload extends Model
      * @var array
      */
     protected $guarded = ['id'];
+    
+    /**
+     * The accessors to append to the model's array form.
+     *
+     * @var array
+     */
+    protected $appends = [
+        'path'
+    ];
+    
+    
+    public function getPathAttribute()
+    {
+        return upload($this->name);
+    }
 }

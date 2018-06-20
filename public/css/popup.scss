@@ -36,7 +36,7 @@
     }
 }
 
-.popup-close {
+.popup-cross {
     background-image: url('../img/cross.svg');
     height: 20px;
     margin: 1em;
@@ -47,6 +47,13 @@
 }
 
 .popup-image {
-    height: 627px;
+    height: 550px;
     margin-top: 50px;
+}
+
+.popup-thumbnails img {
+    display: inline-block;
+    height: 50px;
+    width: 50px;
+    padding: 1rem 0.5rem;
 }

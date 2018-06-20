@@ -15,18 +15,18 @@
 .peinture .grid .grid-item {
     font-size: 10pt;
     font-weight: 100;
-    margin-bottom: 16px;
+    line-height: 0;
     text-align: right;
     width: 334px;
 }
 
 .peinture .grid .grid-item img {
-    /*margin-top: 10px;*/
     width: 100%;
 }
 
-.peinture .grid .grid-item p {
-    font-weight: 300;
+.peinture .grid .grid-item-infos {
+    line-height: 1.5rem;
+    padding: 0.5rem 0;
 }
 
 .navigator {

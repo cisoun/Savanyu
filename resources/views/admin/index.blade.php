@@ -68,7 +68,7 @@
 
 @section('js')
 <script>    
-    var artworks = {!! json_encode($artworks->toArray()) !!};
+    const artworks = {!! json_encode($artworks->toArray()) !!};
 </script>
 <script src="{{ url('public/js/admin/index.js') }}"></script>
 @endsection
