@@ -1,10 +1,10 @@
-var containere;
+var container;
 var grid;
 var popupTemplate;
 
 function closePopup() {
     $('.popup').remove();
-    $('#container').removeClass('blurred');
+    container.removeClass('blurred');
 }
 
 function openPopup(element) {
@@ -14,12 +14,24 @@ function openPopup(element) {
     $('.popup-content').addClass('animation');
     $('.popup-image').attr('src', element.currentTarget.children[0].src);
     
-    let id = element.currentTarget.dataset.artwork;
-    var images = paintings[id].images;
+    const id = element.currentTarget.dataset.artwork;
+    const images = paintings[id].images;
 
+    // If artwork has many pictures, add them as thumbnails.
     if (images.length > 1) {
-        images.forEach((image) => {
+        images.forEach((image, index) => {
+            // Add thumbnail.
             $('.popup-thumbnails').append(`<img src="${image.path}" />`);
+            
+            // Switch popup image to hovered picture.
+            $('.popup-thumbnails').children().last().on('mouseover', (element) => {
+                $('.popup-image').attr('src', element.currentTarget.src);
+            });
+
+            // New line after 12 thumbnails.
+            if ((index + 1) % 12 == 0) {
+                $('.popup-thumbnails').append(`<br/>`);
+            }
         });
     }
     
@@ -35,7 +47,7 @@ function openPopup(element) {
 }
 
 $(function() {
-    console.log( "ready!" );
+    console.log("ready !");
     
     container = $('#container');
     popupTemplate = $('#popupTemplate');
@@ -48,8 +60,7 @@ $(function() {
             gutter: 16
         });
     });
-    
-    
+
 
     const artworksElements = $('[data-artwork]');
     
