@@ -1,18 +1,10 @@
 
-.peinture {
-    //margin: 50px 0;
-    height: 715px;
-    overflow: auto;
-    padding-right: 17px;
-    width: 684px;
-}
-
-.peinture .grid {
+.grid {
     float: left;
     width: 684px;
 }
 
-.peinture .grid .grid-item {
+.grid .grid-item {
     font-size: 10pt;
     font-weight: 100;
     line-height: 0;
@@ -20,34 +12,11 @@
     width: 334px;
 }
 
-.peinture .grid .grid-item img {
+.grid .grid-item img {
     width: 100%;
 }
 
-.peinture .grid .grid-item-infos {
+.grid .grid-item-infos {
     line-height: 1.5rem;
     padding: 0.5rem 0;
-}
-
-.navigator {
-    float: left;
-    padding-top: 300px;
-    width: 122px;
-
-    .arrow {
-        background-image: url('../img/arrow.png');
-        background-size: contain;
-        background-repeat: no-repeat;
-        height: 15px;
-        margin: auto;
-        width: 30px;
-    }
-
-    .arrow-reverse {
-        -webkit-transform: rotate(180deg);
-        -moz-transform: rotate(180deg);
-        -ms-transform: rotate(180deg);
-        -o-transform: rotate(180deg);
-        transform: rotate(180deg);
-    }
 }

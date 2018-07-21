@@ -8,6 +8,8 @@
 }
 
 .popup-content {
+    animation: SHW .5s;
+    animation-fill-mode: both;
     background-color: #fff;
     border: 2px solid #eee;
     border-radius: 6px;
@@ -19,11 +21,6 @@
     text-align: center;
     top: 3em;
     width: 936px;
-}
-
-.popup-content.animation  {
-    animation: SHW .5s;
-    animation-fill-mode: both
 }
 
 @keyframes SHW {

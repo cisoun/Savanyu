@@ -1,7 +1,7 @@
 @import "fonts";
 @import "peinture";
-@import "popup";
 @import "variables";
+@import "components/popup";
 
 //div { border: 1px solid red; }
 
@@ -125,4 +125,36 @@ a.active {
 .scrollable {
     overflow: hidden;
     width: 684px;
+}
+
+.scrollable-inner {
+    //margin: 50px 0;
+    height: 715px;
+    overflow: auto;
+    padding-right: 17px;
+    width: 684px;
+}
+
+.navigator {
+    float: left;
+    padding-top: 300px;
+    width: 122px;
+
+    .arrow {
+        background-image: url('../img/arrow.png');
+        background-size: contain;
+        background-repeat: no-repeat;
+        cursor: pointer;
+        height: 15px;
+        margin: 0.6em auto;
+        width: 30px;
+    }
+
+    .arrow-reverse {
+        -webkit-transform: rotate(180deg);
+        -moz-transform: rotate(180deg);
+        -ms-transform: rotate(180deg);
+        -o-transform: rotate(180deg);
+        transform: rotate(180deg);
+    }
 }
